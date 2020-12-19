@@ -9,12 +9,13 @@ import UIKit
 
 final class PinterestCollectionViewController: UICollectionViewController {
     
-    // MARK: - Defines
+    // MARK: - Definitions
     
     // 今回は1sectionのみ使用する
     enum Section {
       case main
     }
+    
     typealias DataSource = UICollectionViewDiffableDataSource<Section, PinItem>
     // NSDiffableDataSourceSnapshot: diffable-data-sourceが、
     // 表示するセクションとセルの数の情報を参照するためのクラス
@@ -33,7 +34,6 @@ final class PinterestCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .purple  // CollectionViewにより見えない
         configureCollectionView()
         applySnapshot(animationgDifferences: false)
     }
@@ -43,13 +43,13 @@ final class PinterestCollectionViewController: UICollectionViewController {
     // MARK: - Helpers
     
     private func configureCollectionView() {
-        collectionView.backgroundColor = .systemGreen
+        collectionView.backgroundColor = .black
         collectionView.register(PinItemCell.self,
                                 forCellWithReuseIdentifier: PinItemCell.reuseIdentifer)
         collectionView.collectionViewLayout = generateLayout()
     }
     
-    func makeDataSource() -> DataSource {
+    private func makeDataSource() -> DataSource {
         let dataSource = DataSource(collectionView: collectionView, cellProvider: { (collectionView, indexPath, pinItem) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PinItemCell.reuseIdentifer,
                                                           for: indexPath) as? PinItemCell
@@ -60,7 +60,7 @@ final class PinterestCollectionViewController: UICollectionViewController {
         return dataSource
     }
     
-    func applySnapshot(animationgDifferences: Bool = true) {
+    private func applySnapshot(animationgDifferences: Bool = true) {
         var snapshot = Snapshot()
         snapshot.appendSections([.main])  // セクション情報を伝える
         snapshot.appendItems(pinItems)
@@ -68,9 +68,9 @@ final class PinterestCollectionViewController: UICollectionViewController {
         dataSource.apply(snapshot, animatingDifferences: animationgDifferences)
     }
     
-    func generateLayout() -> UICollectionViewLayout {
+    private func generateLayout() -> UICollectionViewLayout {
         
-        let layoutGroup = generateLayoutGroup(withTweets: pinItems)
+        let layoutGroup = generateLayoutGroup(withPinItems: pinItems)
         
         // NSCollectionLayoutSection: セクションを表すクラス
         // 最終的に作成したNSCollectionLayoutGroupを適用する
@@ -81,8 +81,7 @@ final class PinterestCollectionViewController: UICollectionViewController {
         return layout
     }
     
-    // TODO: データ数が1とかで足りない場合にクラッシュするので対応が必要です
-    func generateLayoutGroup(withTweets pinItems: [PinItem]) -> NSCollectionLayoutGroup {
+    private func generateLayoutGroup(withPinItems pinItems: [PinItem]) -> NSCollectionLayoutGroup {
         
         let columns = calculateAndArrangePinItems(pinItems: pinItems)
         
@@ -96,7 +95,7 @@ final class PinterestCollectionViewController: UICollectionViewController {
         // 全カラムのLayoutGroupを作成
         var columnLayoutGroups = [NSCollectionLayoutGroup]()
         for column in columns {
-            // ツイートに関して
+            // PinItemに関して
             var layoutItems = [NSCollectionLayoutItem]()
             for pinItem in column.pinItems {
                 let layoutItem = NSCollectionLayoutItem(
@@ -108,7 +107,7 @@ final class PinterestCollectionViewController: UICollectionViewController {
                 layoutItems.append(layoutItem)
             }
             
-            // ツイートをカラムとして並べる
+            // PinItemをColumnにまとめる
             let columnLayoutGroup = NSCollectionLayoutGroup.vertical(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(columnFractionalWidth),
@@ -120,9 +119,8 @@ final class PinterestCollectionViewController: UICollectionViewController {
             columnLayoutGroups.append(columnLayoutGroup)
         }
         
-        // Columnを水平に並べる
-        // カラムを合算する
-        // TODO: 見直し
+        // Columnをグループにまとめる
+        // グループ高さはColumnの高さが最大のものを採用する
         var maxHeight: CGFloat = .zero
         columns.forEach { column in
             let height = column.calculateFractionalHeight() * columnFractionalWidth
@@ -142,7 +140,8 @@ final class PinterestCollectionViewController: UICollectionViewController {
         return allColumnsLayoutGroup
     }
     
-    // カラム別にツイートを分割する
+    // レイアウト用にPinItemを並び替える
+    // [<1column目のPinItem>,<2column目のPinItem>,...]
     private func calculateAndArrangePinItems(pinItems: [PinItem]) -> [PinItemColumn] {
         // Columnの箱を用意
         var pinItemColumns = [PinItemColumn]()
@@ -156,7 +155,7 @@ final class PinterestCollectionViewController: UICollectionViewController {
             
             for (column_i, pinItemColumn) in pinItemColumns.enumerated() {
                 // 現在最も低い高さのColumnを探す
-                let columnHeight = pinItemColumn.calculateFractionalHeight()  // TODO: reduce 計算量
+                let columnHeight = pinItemColumn.calculateFractionalHeight()  // 冗長な計算なのでバッファを持たせても良さそう
                 if columnHeight < minimumHeight {
                     minimumHeight = columnHeight
                     minimumColumnIndex = column_i
