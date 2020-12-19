@@ -9,21 +9,29 @@
 /* Begin PBXBuildFile section */
 		D0F4A76F258E471F00EED832 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F4A76E258E471F00EED832 /* AppDelegate.swift */; };
 		D0F4A771258E471F00EED832 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F4A770258E471F00EED832 /* SceneDelegate.swift */; };
-		D0F4A773258E471F00EED832 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F4A772258E471F00EED832 /* ViewController.swift */; };
 		D0F4A776258E471F00EED832 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0F4A774258E471F00EED832 /* Main.storyboard */; };
 		D0F4A778258E472300EED832 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0F4A777258E472300EED832 /* Assets.xcassets */; };
 		D0F4A77B258E472300EED832 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0F4A779258E472300EED832 /* LaunchScreen.storyboard */; };
+		D0F4A785258E477800EED832 /* PinterestCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F4A784258E477800EED832 /* PinterestCollectionViewController.swift */; };
+		D0F4A788258E47B700EED832 /* PinItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F4A787258E47B700EED832 /* PinItem.swift */; };
+		D0F4A78B258E47C000EED832 /* PinItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F4A78A258E47C000EED832 /* PinItemCell.swift */; };
+		D0F4A78F258E489600EED832 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F4A78E258E489600EED832 /* UIColor+Extensions.swift */; };
+		D0F4A794258E4BBC00EED832 /* TweetColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F4A793258E4BBC00EED832 /* TweetColumn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D0F4A76B258E471F00EED832 /* PinterestLayoutCollectionViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinterestLayoutCollectionViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F4A76E258E471F00EED832 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0F4A770258E471F00EED832 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D0F4A772258E471F00EED832 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D0F4A775258E471F00EED832 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D0F4A777258E472300EED832 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0F4A77A258E472300EED832 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0F4A77C258E472300EED832 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0F4A784258E477800EED832 /* PinterestCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestCollectionViewController.swift; sourceTree = "<group>"; };
+		D0F4A787258E47B700EED832 /* PinItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinItem.swift; sourceTree = "<group>"; };
+		D0F4A78A258E47C000EED832 /* PinItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinItemCell.swift; sourceTree = "<group>"; };
+		D0F4A78E258E489600EED832 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		D0F4A793258E4BBC00EED832 /* TweetColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetColumn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,27 @@
 		D0F4A76D258E471F00EED832 /* PinterestLayoutCollectionViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				D0F4A78D258E488800EED832 /* Utils */,
 				D0F4A76E258E471F00EED832 /* AppDelegate.swift */,
 				D0F4A770258E471F00EED832 /* SceneDelegate.swift */,
-				D0F4A772258E471F00EED832 /* ViewController.swift */,
+				D0F4A784258E477800EED832 /* PinterestCollectionViewController.swift */,
+				D0F4A793258E4BBC00EED832 /* TweetColumn.swift */,
+				D0F4A787258E47B700EED832 /* PinItem.swift */,
+				D0F4A78A258E47C000EED832 /* PinItemCell.swift */,
 				D0F4A774258E471F00EED832 /* Main.storyboard */,
 				D0F4A777258E472300EED832 /* Assets.xcassets */,
 				D0F4A779258E472300EED832 /* LaunchScreen.storyboard */,
 				D0F4A77C258E472300EED832 /* Info.plist */,
 			);
 			path = PinterestLayoutCollectionViewDemo;
+			sourceTree = "<group>";
+		};
+		D0F4A78D258E488800EED832 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D0F4A78E258E489600EED832 /* UIColor+Extensions.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +157,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0F4A773258E471F00EED832 /* ViewController.swift in Sources */,
 				D0F4A76F258E471F00EED832 /* AppDelegate.swift in Sources */,
+				D0F4A78F258E489600EED832 /* UIColor+Extensions.swift in Sources */,
+				D0F4A785258E477800EED832 /* PinterestCollectionViewController.swift in Sources */,
+				D0F4A78B258E47C000EED832 /* PinItemCell.swift in Sources */,
+				D0F4A788258E47B700EED832 /* PinItem.swift in Sources */,
 				D0F4A771258E471F00EED832 /* SceneDelegate.swift in Sources */,
+				D0F4A794258E4BBC00EED832 /* TweetColumn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
