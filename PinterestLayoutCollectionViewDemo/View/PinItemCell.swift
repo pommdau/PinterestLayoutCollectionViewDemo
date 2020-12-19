@@ -47,6 +47,6 @@ class PinItemCell: UICollectionViewCell {
         guard let pinItem = pinItem else { return }
         
         backgroundColor = pinItem.itemColor
-        textLabel.text = pinItem.text
+        textLabel.text = "\(pinItem.serialNumber)"
     }
 }

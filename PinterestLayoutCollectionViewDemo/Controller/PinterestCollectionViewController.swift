@@ -13,7 +13,7 @@ final class PinterestCollectionViewController: UICollectionViewController {
     
     // 今回は1sectionのみ使用する
     enum Section {
-      case main
+        case main
     }
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, PinItem>
@@ -25,7 +25,7 @@ final class PinterestCollectionViewController: UICollectionViewController {
     
     private lazy var dataSource = makeDataSource()  // lazy: ViewControllerの初期化後に呼ぶ必要があるため
     private var pinItems = PinItem.demoPinItems()
-    private let itemsPerRow = 5
+    private let itemsPerRow = 10
     private var columnFractionalWidth: CGFloat {
         1.0 / CGFloat(itemsPerRow)
     }
@@ -81,6 +81,7 @@ final class PinterestCollectionViewController: UICollectionViewController {
         return layout
     }
     
+    // 注: 今のままだとデータ数が合わないとout of indexになってしまうので、実際は気をつける必要あり
     private func generateLayoutGroup(withPinItems pinItems: [PinItem]) -> NSCollectionLayoutGroup {
         
         let columns = calculateAndArrangePinItems(pinItems: pinItems)
@@ -115,7 +116,7 @@ final class PinterestCollectionViewController: UICollectionViewController {
                 ),
                 subitems: layoutItems
             )
-
+            
             columnLayoutGroups.append(columnLayoutGroup)
         }
         
@@ -165,5 +166,20 @@ final class PinterestCollectionViewController: UICollectionViewController {
         }
         
         return pinItemColumns
+    }
+}
+
+extension PinterestCollectionViewController {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        pinItems.remove(at: indexPath.row)
+        
+        // 一旦通し番号でデータを整列させてから…
+        pinItems.sort { (firstPinItem, secondPinItem) -> Bool in
+            firstPinItem.serialNumber < secondPinItem.serialNumber
+        }
+        // 再度レイアウトの計算をする
+        collectionView.collectionViewLayout = generateLayout()
+        
+        applySnapshot()
     }
 }
