@@ -17,6 +17,7 @@
 		D0F4A78B258E47C000EED832 /* PinItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F4A78A258E47C000EED832 /* PinItemCell.swift */; };
 		D0F4A78F258E489600EED832 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F4A78E258E489600EED832 /* UIColor+Extensions.swift */; };
 		D0F4A794258E4BBC00EED832 /* TweetColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F4A793258E4BBC00EED832 /* TweetColumn.swift */; };
+		D0F4A797258E5E7500EED832 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F4A796258E5E7500EED832 /* UIView+AutoLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		D0F4A78A258E47C000EED832 /* PinItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinItemCell.swift; sourceTree = "<group>"; };
 		D0F4A78E258E489600EED832 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		D0F4A793258E4BBC00EED832 /* TweetColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetColumn.swift; sourceTree = "<group>"; };
+		D0F4A796258E5E7500EED832 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				D0F4A78E258E489600EED832 /* UIColor+Extensions.swift */,
+				D0F4A796258E5E7500EED832 /* UIView+AutoLayout.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				D0F4A785258E477800EED832 /* PinterestCollectionViewController.swift in Sources */,
 				D0F4A78B258E47C000EED832 /* PinItemCell.swift in Sources */,
 				D0F4A788258E47B700EED832 /* PinItem.swift in Sources */,
+				D0F4A797258E5E7500EED832 /* UIView+AutoLayout.swift in Sources */,
 				D0F4A771258E471F00EED832 /* SceneDelegate.swift in Sources */,
 				D0F4A794258E4BBC00EED832 /* TweetColumn.swift in Sources */,
 			);

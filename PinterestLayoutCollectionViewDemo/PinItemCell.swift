@@ -18,11 +18,21 @@ class PinItemCell: UICollectionViewCell {
             configureUI()
         }
     }
+    
+    private let textLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 30)
+        return label
+    }()
    
     // MARK: - Lifecycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        // AutoLayout設定
+        addSubview(textLabel)
+        textLabel.center(inView: self)
     }
     
     required init?(coder: NSCoder) {
@@ -37,5 +47,6 @@ class PinItemCell: UICollectionViewCell {
         guard let pinItem = pinItem else { return }
         
         backgroundColor = pinItem.itemColor
+        textLabel.text = pinItem.text
     }
 }
